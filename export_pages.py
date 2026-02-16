@@ -23,6 +23,10 @@ def run_applescript(script: str) -> str:
 def posix_escaped(path: str) -> str:
     return path.replace('"', '\\"')
 
+def make_relative(path: str, start: str) -> str:
+    if path.startswith(start):
+        return path.replace(start + os.sep, './', 1)
+    return path
 
 def export_pages(pages_path: str, pdf_path: str, docx_path: str, formats: list) -> None:
     path = posix_escaped(os.path.abspath(pages_path))
@@ -98,7 +102,7 @@ def main():
 
         # choose most recently modified
         pages_file = max(candidates, key=lambda p: os.path.getmtime(p))
-        print(f"Auto-selected pages file: {pages_file}")
+        print(f"Auto-selected pages file: {make_relative(pages_file, os.getcwd())}")
 
     if not os.path.exists(pages_file):
         print(f"Input file not found: {pages_file}")
@@ -131,9 +135,9 @@ def main():
 
     output_lines = ["Exported:"]
     if pdf_path:
-        output_lines.append(f"  PDF: {pdf_path}")
+        output_lines.append(f"  PDF: {make_relative(pdf_path, os.getcwd())}")
     if docx_path:
-        output_lines.append(f"  DOCX: {docx_path}")
+        output_lines.append(f"  DOCX: {make_relative(docx_path, os.getcwd())}")
     print("\n".join(output_lines))
 
 
