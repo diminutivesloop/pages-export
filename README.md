@@ -2,6 +2,8 @@
 
 Small script to export a macOS Pages document (`.pages`) to PDF and DOCX using Pages.app via AppleScript.
 
+🤖 Built w/ substantial help from GitHub Copilot
+
 ## Requirements
 - macOS with Pages.app installed
 - Python 3
