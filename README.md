@@ -1,8 +1,6 @@
-# Pages export helper
+# Pages export 
 
 Small script to export a macOS Pages document (`.pages`) to PDF and DOCX using Pages.app via AppleScript.
-
-🤖 Built w/ substantial help from GitHub Copilot
 
 ## Requirements
 - macOS with Pages.app installed
@@ -47,3 +45,5 @@ python3 export_pages.py /full/path/to/resume.pages -o ./exports/Resume -f docx
 - If a document was already open in Pages, the script will export it but will not close it after exporting; if the script opened the document itself it will close it.
 - The script prints the auto-selected path when it chooses a `.pages` file automatically.
 - If you want automatic exports on save, use a LaunchAgent, Automator Folder Action, or a file watcher — no modification to this script is required.
+
+🤖 Built w/ substantial help from GitHub Copilot
